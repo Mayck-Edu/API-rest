@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Auth Client</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        input, button { padding: 8px; margin: 5px 0; }
+        div { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; background-color: #f9f9f9; }
+        h2 { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 0; }
+        p.status { margin-top: 10px; font-weight: bold; }
+        p.success { color: green; }
+        p.error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Firebase Auth Client Example</h1>
+    <p>Este frontend usa o Firebase Client SDK para login e chama sua API de backend com o token.</p>
+
+    <div>
+        <h2>1. Registrar Novo Usuário (Frontend)</h2>
+        <input type="email" id="registerEmail" placeholder="Email (ex: novo@example.com)">
+        <input type="password" id="registerPassword" placeholder="Senha (mín 6 caracteres)">
+        <button onclick="registerUser()">Registrar</button>
+        <p id="registerStatus" class="status"></p>
+        <small>Este registro usa o Firebase Client SDK, o método recomendado para auto-registro.</small>
+    </div>
+
+    <div>
+        <h2>2. Fazer Login (Frontend)</h2>
+        <input type="email" id="loginEmail" placeholder="Email">
+        <input type="password" id="loginPassword" placeholder="Senha">
+        <button onclick="loginUser()">Login</button>
+        <p id="loginStatus" class="status"></p>
+        <small>Este login usa o Firebase Client SDK. O token obtido será usado para chamadas à API.</small>
+        <p><strong>Seu ID Token Atual:</strong> <span id="currentIdTokenDisplay">N/A</span></p>
+    </div>
+
+    <hr>
+
+    <div>
+        <h2>3. Chamar Rotas Protegidas da API</h2>
+        <p>As chamadas abaixo enviarão o ID Token obtido no login para o seu backend para verificação.</p>
+
+        <h3>Obter Dados Protegidos</h3>
+        <button onclick="getProtectedData()">Acessar Dados Protegidos</button>
+        <p id="protectedDataStatus" class="status"></p>
+
+        <h3>Criar Novo Item</h3>
+        <input type="text" id="itemName" placeholder="Nome do Item (ex: 'Meu Item Secreto')">
+        <button onclick="createItem()">Criar Item</button>
+        <p id="createItemStatus" class="status"></p>
+
+        <h3>Acessar Dados Apenas para Admin</h3>
+        <button onclick="getAdminOnlyData()">Acessar Dados Admin</button>
+        <p id="adminOnlyDataStatus" class="status"></p>
+        <small>Para testar esta rota, você precisará adicionar uma `custom claim` de 'role: admin' ao seu usuário Firebase via Admin SDK.</small>
+    </div>
+
+    <!-- Importe os SDKs do Firebase. Use a versão compatibilidade para simplicidade neste exemplo. -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <!-- Seu código JavaScript do cliente -->
+    <script src="client.js"></script>
+</body>
+</html>
