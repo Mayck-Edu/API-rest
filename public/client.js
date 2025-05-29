@@ -1,30 +1,21 @@
 // client.js
 
 // 1. CONFIGURAÇÃO DO FIREBASE CLIENT SDK
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+//    Substitua pelos seus dados de configuração do projeto Firebase.
+//    Você encontra isso no Console Firebase: Project settings (engrenagem) -> General -> Your apps -> Adicione um app web (`</>`)
 const firebaseConfig = {
-  apiKey: "AIzaSyCnIlztK9JaVduun0SeGsVeaerq2y4s8wo",
-  authDomain: "k25-45f7e.firebaseapp.com",
-  projectId: "k25-45f7e",
-  storageBucket: "k25-45f7e.firebasestorage.app",
-  messagingSenderId: "814011394790",
-  appId: "1:814011394790:web:19733291d5cfb2fbffe927",
-  measurementId: "G-N9YN1F9HHK"
+    apiKey: "AIzaSyCnIlztK9JaVduun0SeGsVeaerq2y4s8wo", // Mantenha sua chave real aqui
+    authDomain: "k25-45f7e.firebaseapp.com",
+    projectId: "k25-45f7e",
+    storageBucket: "k25-45f7e.firebasestorage.app",
+    messagingSenderId: "814011394790",
+    appId: "1:814011394790:web:19733291d5cfb2fbffe927",
+    measurementId: "G-N9YN1F9HHK" // Se não usar analytics, pode remover esta linha e a importação relacionada
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-
 // Inicializa o Firebase no cliente
+// Remova a linha "const app = initializeApp(firebaseConfig);" e "const analytics = getAnalytics(app);"
+// e mantenha apenas o firebase.initializeApp para compatibilidade com os SDKs importados no HTML
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth(); // Obtém a instância do serviço de autenticação
 
@@ -47,7 +38,6 @@ auth.onAuthStateChanged(async (user) => {
         document.getElementById('currentIdTokenDisplay').textContent = 'N/A';
     }
 });
-
 
 // --- Funções de Autenticação (usando Firebase Client SDK) ---
 
@@ -195,7 +185,6 @@ async function createItem() {
         console.error('Network Error:', error);
     }
 }
-
 
 // Função para acessar dados apenas para admin
 async function getAdminOnlyData() {

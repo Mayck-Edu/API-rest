@@ -19,6 +19,12 @@ app.use(cors());
 //    Isso permite que você acesse `req.body` nas rotas com dados JSON enviados pelo cliente.
 app.use(express.json());
 
+// --- NOVO: Adicione esta linha para servir arquivos estáticos ---
+// A pasta 'public' contém seu index.html, client.js, etc.
+// Isso permite que você acesse http://localhost:3000/index.html
+app.use(express.static('public'));
+// ----------------------------------------------------------------
+
 // 4. Conecta as rotas de autenticação sob o prefixo '/api/auth'
 //    Todas as rotas definidas em auth.js serão acessíveis via /api/auth/...
 app.use('/api/auth', authRoutes);

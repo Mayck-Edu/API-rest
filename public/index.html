@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firebase Auth Client</title>
+    <!-- Seu bloco de estilo CSS -->
     <style>
         body { font-family: sans-serif; margin: 20px; }
         input, button { padding: 8px; margin: 5px 0; }
@@ -59,9 +60,10 @@
     </div>
 
     <!-- Importe os SDKs do Firebase. Use a versão compatibilidade para simplicidade neste exemplo. -->
+    <!-- Estes scripts DEVEM vir ANTES do seu client.js, pois client.js depende deles -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <!-- Seu código JavaScript do cliente -->
-    <script src="client.js"></script>
+    <script src="./client.js"></script>
 </body>
 </html>
