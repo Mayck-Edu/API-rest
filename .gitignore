@@ -23,4 +23,5 @@ temp/
 .cache/
 .nyc_output/
 .env.*
-./config/firebase-service-account.json
+# Optional: TypeScript
+config/firebase-service-account.json
